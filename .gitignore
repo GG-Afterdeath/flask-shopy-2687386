@@ -1,0 +1,7 @@
+/__pycache__
+/migrations
+/venv
+/.idea
+/app/__pycache__
+/app/productos/imagenes
+/app/productos/__pycache__
