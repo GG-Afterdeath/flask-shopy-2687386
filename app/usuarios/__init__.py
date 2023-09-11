@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-productos = Blueprint('usuarios',
+usuarios = Blueprint('usuarios',
                       __name__,
                       url_prefix= "/usuarios",
                       template_folder= 'templates'

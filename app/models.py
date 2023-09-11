@@ -29,3 +29,10 @@ class Detalles(db.Model):
     producto_id = db.Column(db.Integer, db.ForeignKey('productos.id'))
     venta_id=db.Column(db.Integer, db.ForeignKey('ventas.id'))
     cantidad = db.Column(db.Integer)
+
+class Usuario(db.Model):
+    __tablename__="usuarios"
+    id= db.Column(db.Integer, primary_key= True)
+    nombre= db.Column(db.String(30))
+    email= db.Column(db.String(100))
+    password= db.Column(db.String(100))
