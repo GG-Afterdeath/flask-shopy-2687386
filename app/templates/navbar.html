@@ -1,11 +1,23 @@
 <nav class="nav nav-inverse">
     <div class="container">
+        <div class="navbar-brand">
+            {{ current_user.username}}
+        </div>
         <ul class="nav navbar-nav">
             <li>
                 <a href="">Productos</a>
             </li>
             <li>
                 <a href="">Clientes</a>
+            </li>
+            <li>
+                {% if current_user.is_authnticated  %}
+                <a href="/auth/logout">
+                    Cerrar sesión
+                </a>
+                {% else %}
+                <a href="/auth/login">Login</a>
+                {% endif %}
             </li>
         </ul>
     </div>

@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for, flash
+from flask_login import login_required
 from app.productos import productos
 import app
 import os
@@ -23,7 +24,7 @@ def crear():
         return redirect(url_for('productos.listar'))
     return render_template('new.html', form = form)
 
-
+@login_required
 @productos.route('/listar')
 def listar():
     productos = app.models.Producto.query.all()
