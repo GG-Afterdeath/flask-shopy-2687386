@@ -1,4 +1,5 @@
 from flask import render_template, redirect, url_for, flash
+from flask_login import login_required
 from app.usuarios import usuarios
 import app
 import os
@@ -19,12 +20,13 @@ def crear():
         return redirect(url_for('usuarios.listar'))
     return render_template('newu.html', form = form)
 
-
+@login_required
 @usuarios.route('/consultate')
 def listar():
     usuarios = app.models.Usuario.query.all()
     return render_template("consultar.html", usuarios = usuarios)
 
+@login_required
 @usuarios.route('/update/<id_user>', methods = ['GET', 'POST'])
 def actualizar(id_user):
     p = app.models.Usuario.query.get(id_user)
@@ -36,6 +38,7 @@ def actualizar(id_user):
         return redirect('/usuarios/consultate')
     return render_template('newu.html', form = form, p = p)
 
+@login_required
 @usuarios.route('/delete/<id_user>')
 def eliminar(id_user):
     p = app.models.Usuario.query.get(id_user)

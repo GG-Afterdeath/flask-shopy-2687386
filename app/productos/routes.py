@@ -6,6 +6,7 @@ import os
 from .forms import NewProductForm, EditProductForm
 
 # Ruta de productos
+@login_required
 @productos.route('/create', methods = ['GET', 'POST'])
 def crear():
     p = app.models.Producto()
@@ -30,6 +31,7 @@ def listar():
     productos = app.models.Producto.query.all()
     return render_template("listar.html", productos = productos)
 
+@login_required
 @productos.route('/update/<id_producto>', methods = ['GET', 'POST'])
 def actualizar(id_producto):
     p = app.models.Producto.query.get(id_producto)
@@ -41,6 +43,7 @@ def actualizar(id_producto):
         return redirect('productos/listar')
     return render_template('new.html', form = form)
 
+@login_required
 @productos.route('/delete/<id_producto>')
 def eliminar(id_producto):
     p = app.models.Producto.query.get(id_producto)
